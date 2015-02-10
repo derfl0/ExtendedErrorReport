@@ -1,0 +1,7 @@
+pluginname=ExtendedErrorHandler
+pluginclassname=ExtendederrorhandlerPlugin
+origin=intelec
+version=1.0
+studipMinVersion=3.0
+dbscheme=db/install.sql
+uninstalldbscheme=db/uninstall.sql

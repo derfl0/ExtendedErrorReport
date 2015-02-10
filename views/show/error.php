@@ -1,0 +1,1 @@
+<?= MessageBox::error(_('Bei der Ausführung der aufgerufenen Seite ist ein Fehler aufgetreten!')) ?>
