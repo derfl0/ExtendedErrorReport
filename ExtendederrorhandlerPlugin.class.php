@@ -20,15 +20,18 @@ class ExtendederrorhandlerPlugin extends StudIPPlugin implements SystemPlugin {
         parent::__construct();
         set_error_handler(array($this, "extendedErrorHandler"));
         register_shutdown_function(array($this, "shutdownFunction"));
-        
+
         // In case of production help user to show no errors and be able to redirect
         if (Studip\ENV == 'production') {
             ini_set('display_errors', 0);
         }
-        
-        $navigation = new AutoNavigation(_('ErrorReport'));
-        $navigation->setURL(PluginEngine::GetURL($this, array(), 'show'));
-        Navigation::addItem('/admin/extendederrorhandlerplugin', $navigation);
+
+        // Navigation for root
+        if ($GLOBALS['perm']->have_perm('root')) {
+            $navigation = new AutoNavigation(_('ErrorReport'));
+            $navigation->setURL(PluginEngine::GetURL($this, array(), 'show'));
+            Navigation::addItem('/admin/extendederrorhandlerplugin', $navigation);
+        }
     }
 
     public function initialize() {
